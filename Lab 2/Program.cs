@@ -1,10 +1,13 @@
-﻿Sum();
+﻿WelcomeMessage();
+Clear();
+Sum();
 Clear();
 Multiply();
 Clear();
 Values();
 Clear();
-
+Calculator();
+GoodbyeMessage();
 // part 1 - adds 2 numbers
 static void Sum()
 {
@@ -46,6 +49,65 @@ static void Values()
     Console.WriteLine("size of float(bytes): " + sizeof(float) + " min value of float: " + float.MinValue + " max value of float: " + float.MaxValue);
     Console.WriteLine("size of double(bytes): " + sizeof(double) + " min value of double: " + double.MinValue + " max value of double: " + double.MaxValue);
     Console.WriteLine("size of decimal(bytes): " + sizeof(decimal) + " min value of decimal: " + decimal.MinValue + " max value of decimal: " + decimal.MaxValue);
+}
+// Part 4 - a calculator
+static void Calculator()
+{
+    bool keepGoing = true;
+    int num1 = 0;
+    int num2 = 0;
+    string op = "";
+    string again = "";
+    while (keepGoing)
+    {
+        Console.Write("Enter the first number: \n");
+        num1 = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter the second number: \n");
+        num2 = Convert.ToInt32(Console.ReadLine());
+        Console.Write("What do you want to do? (+, -, *, /, %): ");
+        op = Console.ReadLine();
+        switch (op)
+        {
+            case ("+"):
+                Console.WriteLine($"{num1} + {num2} = {num1 + num2}");
+                break;
+            case ("-"):
+                Console.WriteLine($"{num1} - {num2} = {num1 - num2}");
+                break;
+            case "*":
+                Console.WriteLine($"{num1} * {num2} = {num1 * num2}");
+                break;
+            case "/":
+                Console.WriteLine($"{num1} / {num2} = {num1 / num2}");
+                break;
+            case "%":
+                Console.WriteLine($"{num1} % {num2} = {num1 % num2}");
+                break;
+            default:
+                break;
+        }
+        Console.WriteLine("Again? (type esc to stop)");
+        again = Console.ReadLine();
+        if (again == "esc")
+        {
+            keepGoing = false;
+        }
+        else
+        {
+            continue;
+        }
+    }
+}
+
+static void WelcomeMessage()
+{
+    Console.WriteLine("-------------------------------------\nWelcome to Lab2 by Logan Turbyfill\n-------------------------------------\n");
+}
+
+static void GoodbyeMessage()
+{
+    Console.WriteLine("This was lab 2 by Logan Turbyfill. Thank you for using. Goodbye!");
+    Console.ReadLine();
 }
 
 static void Clear()
